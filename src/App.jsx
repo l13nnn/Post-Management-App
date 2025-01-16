@@ -21,7 +21,7 @@ const App = () => {
     }, []);
 
     const addPost = (newPost) => {
-        setPosts([...posts, newPost]);
+        setPosts((prevPosts) => [newPost, ...prevPosts]);
     };
 
     return (

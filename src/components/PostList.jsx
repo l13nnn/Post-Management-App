@@ -3,8 +3,8 @@ import React from "react";
 function PostList ({posts}) {
   return (
     <div>
-      {posts.map((post) => 
-      <div className="post-list" key={post.id}>
+      {posts.map((post, index) => 
+      <div className="post-list" key={index}>
          <h4>{post.title}</h4>
          <p>{post.body}</p>
       </div>
