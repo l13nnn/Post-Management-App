@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 const PostForm = ({ addPost }) => {
@@ -6,10 +7,20 @@ const PostForm = ({ addPost }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const newPost = { title, body };
-        addPost(newPost);
-        setTitle('');
-        setBody('');
+        axios.post('https://jsonplaceholder.typicode.com/posts', {
+            title: title,
+            body: body
+        })
+        .then((res) => {
+            console.log(res)
+            const newPost = { title, body };
+            addPost(newPost);
+            setTitle('');
+            setBody('');
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     };
 
     return (
